@@ -1,0 +1,52 @@
+﻿@page "{SearchString?}"
+@model MovieMarket.Pages.Customer.Home.IndexModel
+@{
+}
+<div class="row container pb-3 backgroundWhite">
+
+	<p>
+		<form class="d-flex" class="col-3">
+			<input type="text" placeholder="Enter Film Name" class="form-control me-sn-2" asp-for="SearchString"/>
+			<input type="submit" value="Search" class="btn btn-outline" class="form-control align-content-end" />
+			<a asp-route-Film="" asp-route-SearchString="" class="btn btn-outline-secondary">Clear</a>
+		</form>
+	</p>
+	<br>
+	<br>
+	<br>
+
+	@foreach(var director in Model.listOfDirectors)
+	{
+		<h2 class="text-success pl-1"><b>@director.Name</b></h2>
+		<div class="col-12">
+			<div class="row my-3">
+				@foreach (var film in Model.listOfFilms.Where(p => p.DirectorId == director.Id))
+				{
+					<div class="col-lg-4 col-md-6 pb-4 filter">
+						<div class="card bg-white rounder shadow-sm" style="border:1px solid #222">
+							<div class="card-body pb-1 row">
+								<div class="col-8" h5>@film.Name</div>
+								<div class="col-4 text-end"><span class="text-info h4">@film.Genre</span></div>
+							</div>
+							<img class="card-img-top img-fluid d-block mx-auto mb-3" src="@film.Image" alt="Product Image" />
+							<div class="card-body p-1 px-3 row">
+								<div class="col-6">
+									<span class="badge p-2 border w-100 text-dark bg-warning">@film.Director.Name</span>
+								</div>
+								<div class="col-6 border-0">
+									<span class="badge p-2 border w-100 bg-info">@film.Name</span>
+								</div>
+								<div class="col-12 pt-2" style="font-size:13px; text-align:justify">
+									<p>@film.Genre</p>
+								</div>
+								<div class="col-12 pt-1">
+									<a asp-page="Details" asp-route-id="@film.Id" class="btn btn-dark form-control btn-sm p-2" style="height:40px">View Details</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	}
+</div>

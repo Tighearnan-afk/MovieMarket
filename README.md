@@ -1,0 +1,2 @@
+## Preface
+This is an upload of an e-commerce application I developed with ASP.NET Core for my ASP.NET Development module. This repository is meant for display purposes as I did not originally have a repository for this application while developing it. 

@@ -1,0 +1,31 @@
+﻿@page
+@model MovieMarket.Pages.Admin.Directors.EditModel
+@{
+}
+<form method="post">
+	<input hidden asp-for="Director.Id" />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Edit Director</h2>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Director.Name"></label>
+			<input asp-for="@Model.Director.Name" class="form-control" />
+			<span asp-validation-for="@Model.Director.Name" class="text-danger"></span>
+
+			<label asp-for="@Model.Director.Age"></label>
+			<input asp-for="@Model.Director.Age" class="form-control" />
+
+			<label asp-for="@Model.Director.YearsActive"></label>
+			<input asp-for="@Model.Director.YearsActive" class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-primary">Update</button>
+		<a asp-page="Index" class="btn btn-secondary">Back to Index</a>
+	</div>
+</form>
+@section Scripts {
+	@{
+		<partial name="_validationScriptsPartial" />
+	}
+}
